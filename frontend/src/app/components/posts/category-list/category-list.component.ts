@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Category } from '../../../models/category.model';
 import { CategoryService } from '../../../services/category.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-category-list',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, HttpClientModule],
+  providers: [CategoryService],
   templateUrl: './category-list.component.html',
   styleUrls: ['./category-list.component.scss']
 })

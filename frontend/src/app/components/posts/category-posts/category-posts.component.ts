@@ -5,11 +5,13 @@ import { Category } from '../../../models/category.model';
 import { Post } from '../../../models/post.model';
 import { CategoryService } from '../../../services/category.service';
 import { PostService } from '../../../services/post.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-category-posts',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, HttpClientModule],
+  providers: [CategoryService, PostService],
   templateUrl: './category-posts.component.html',
   styleUrls: ['./category-posts.component.scss']
 })

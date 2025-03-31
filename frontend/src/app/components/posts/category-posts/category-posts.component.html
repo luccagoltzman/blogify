@@ -1,0 +1,68 @@
+<div class="category-posts-page">
+  <div class="container">
+    <!-- Loading spinner -->
+    <div *ngIf="isLoading" class="text-center my-5">
+      <div class="spinner-border text-primary-custom" role="status">
+        <span class="visually-hidden">Carregando...</span>
+      </div>
+    </div>
+    
+    <!-- Error message -->
+    <div *ngIf="error" class="alert alert-danger">
+      {{ error }}
+    </div>
+    
+    <!-- Category header -->
+    <div *ngIf="!isLoading && !error && category" class="category-header">
+      <div class="category-image-container">
+        <img [src]="category.image || 'assets/images/category-placeholder.jpg'" [alt]="category.name" class="category-image">
+        <div class="category-overlay"></div>
+        <div class="category-content">
+          <h1 class="category-title">{{ category.name }}</h1>
+          <p class="category-description" *ngIf="category.description">{{ category.description }}</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Posts list -->
+    <div class="posts-container mt-4">
+      <div *ngIf="!isLoading && !error && posts.length === 0" class="alert alert-info">
+        Nenhuma publicação encontrada para esta categoria.
+      </div>
+      
+      <div *ngIf="!isLoading && !error && posts.length > 0" class="row">
+        <div class="col-md-6 col-lg-4 mb-4" *ngFor="let post of posts">
+          <div class="post-card">
+            <div class="post-image">
+              <img [src]="post.image || 'assets/images/post-placeholder.jpg'" [alt]="post.title" class="card-img-top">
+            </div>
+            <div class="post-content">
+              <div class="post-meta">
+                <span class="publish-date">{{ post.created_at | date:'dd/MM/yyyy' }}</span>
+              </div>
+              <h3 class="post-title">
+                <a [routerLink]="['/post', post.slug]">{{ post.title }}</a>
+              </h3>
+              <p class="post-excerpt" *ngIf="post.subtitle">{{ post.subtitle }}</p>
+              
+              <div class="post-footer">
+                <div class="post-author">
+                  <img [src]="post.user.avatar || 'assets/images/user-placeholder.jpg'" [alt]="post.user.name" class="author-avatar">
+                  <span class="author-name">{{ post.user.name }}</span>
+                </div>
+                <div class="post-stats">
+                  <span class="stat-item">
+                    <i class="far fa-heart"></i> {{ post.likes_count || 0 }}
+                  </span>
+                  <span class="stat-item">
+                    <i class="far fa-comment"></i> {{ post.comments_count || 0 }}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 
