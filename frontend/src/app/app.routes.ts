@@ -14,23 +14,15 @@ export const routes: Routes = [
     loadChildren: () => import('./components/admin/admin.routes').then(m => m.ADMIN_ROUTES)
   },
   {
-    path: 'categorias',
-    loadChildren: () => import('./components/posts/posts.routes').then(m => m.CATEGORY_ROUTES)
-  },
-  {
     path: 'sobre',
-    loadComponent: () => import('./components/pages/about/about.component').then(c => c.AboutComponent)
+    loadComponent: () => import('./components/pages/about/about.component').then(m => m.AboutComponent)
   },
   {
     path: 'contato',
-    loadComponent: () => import('./components/pages/contact/contact.component').then(c => c.ContactComponent)
-  },
-  {
-    path: 'perfil',
-    loadComponent: () => import('./components/auth/profile/profile.component').then(c => c.ProfileComponent)
+    loadComponent: () => import('./components/pages/contact/contact.component').then(m => m.ContactComponent)
   },
   {
     path: '**',
-    loadComponent: () => import('./components/pages/not-found/not-found.component').then(c => c.NotFoundComponent)
+    loadComponent: () => import('./components/pages/not-found/not-found.component').then(m => m.NotFoundComponent)
   }
 ];

@@ -3,21 +3,18 @@ import { Routes } from '@angular/router';
 export const POSTS_ROUTES: Routes = [
   {
     path: '',
-    loadComponent: () => import('./post-list/post-list.component').then(c => c.PostListComponent),
+    loadComponent: () => import('./post-list/post-list.component').then(m => m.PostListComponent)
   },
   {
     path: 'post/:slug',
-    loadComponent: () => import('./post-detail/post-detail.component').then(c => c.PostDetailComponent),
-  }
-];
-
-export const CATEGORY_ROUTES: Routes = [
-  {
-    path: '',
-    loadComponent: () => import('./category-list/category-list.component').then(c => c.CategoryListComponent),
+    loadComponent: () => import('./post-detail/post-detail.component').then(m => m.PostDetailComponent)
   },
   {
-    path: ':slug',
-    loadComponent: () => import('./category-posts/category-posts.component').then(c => c.CategoryPostsComponent),
+    path: 'categorias',
+    loadComponent: () => import('./category-list/category-list.component').then(m => m.CategoryListComponent)
+  },
+  {
+    path: 'categorias/:slug',
+    loadComponent: () => import('./category-posts/category-posts.component').then(m => m.CategoryPostsComponent)
   }
 ]; 

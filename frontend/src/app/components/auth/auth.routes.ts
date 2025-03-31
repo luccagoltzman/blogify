@@ -3,14 +3,14 @@ import { Routes } from '@angular/router';
 export const AUTH_ROUTES: Routes = [
   {
     path: 'login',
-    loadComponent: () => import('./login/login.component').then(c => c.LoginComponent),
+    loadComponent: () => import('./login/login.component').then(m => m.LoginComponent)
   },
   {
     path: 'registro',
-    loadComponent: () => import('./register/register.component').then(c => c.RegisterComponent),
+    loadComponent: () => import('./register/register.component').then(m => m.RegisterComponent)
   },
   {
-    path: 'profile',
-    loadComponent: () => import('./profile/profile.component').then(c => c.ProfileComponent),
+    path: 'perfil',
+    loadComponent: () => import('./profile/profile.component').then(m => m.ProfileComponent)
   }
 ]; 

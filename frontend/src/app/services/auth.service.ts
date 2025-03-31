@@ -59,7 +59,7 @@ export class AuthService {
   
   get isAdmin(): boolean {
     const user = this.currentUserSubject.value;
-    return user ? user.is_admin : false;
+    return user ? user.is_admin === true : false;
   }
   
   get token(): string | null {
