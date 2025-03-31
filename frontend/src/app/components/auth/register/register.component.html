@@ -1,0 +1,95 @@
+<div class="register-page">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-lg-5 mx-auto">
+        <div class="auth-card">
+          <h1 class="text-center mb-4">Registrar</h1>
+          
+          <div *ngIf="error" class="alert alert-danger">
+            {{ error }}
+          </div>
+          
+          <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+              <label for="name" class="form-label">Nome</label>
+              <input 
+                type="text" 
+                class="form-control" 
+                id="name" 
+                formControlName="name"
+                [ngClass]="{'is-invalid': registerForm.get('name')?.invalid && registerForm.get('name')?.touched}"
+              >
+              <div *ngIf="registerForm.get('name')?.errors?.['required'] && registerForm.get('name')?.touched" class="invalid-feedback">
+                Nome é obrigatório
+              </div>
+            </div>
+            
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input 
+                type="email" 
+                class="form-control" 
+                id="email" 
+                formControlName="email"
+                [ngClass]="{'is-invalid': registerForm.get('email')?.invalid && registerForm.get('email')?.touched}"
+              >
+              <div *ngIf="registerForm.get('email')?.errors?.['required'] && registerForm.get('email')?.touched" class="invalid-feedback">
+                Email é obrigatório
+              </div>
+              <div *ngIf="registerForm.get('email')?.errors?.['email'] && registerForm.get('email')?.touched" class="invalid-feedback">
+                Por favor, insira um email válido
+              </div>
+            </div>
+            
+            <div class="mb-3">
+              <label for="password" class="form-label">Senha</label>
+              <input 
+                type="password" 
+                class="form-control" 
+                id="password" 
+                formControlName="password"
+                [ngClass]="{'is-invalid': registerForm.get('password')?.invalid && registerForm.get('password')?.touched}"
+              >
+              <div *ngIf="registerForm.get('password')?.errors?.['required'] && registerForm.get('password')?.touched" class="invalid-feedback">
+                Senha é obrigatória
+              </div>
+              <div *ngIf="registerForm.get('password')?.errors?.['minlength'] && registerForm.get('password')?.touched" class="invalid-feedback">
+                A senha deve ter pelo menos 6 caracteres
+              </div>
+            </div>
+            
+            <div class="mb-3">
+              <label for="password_confirmation" class="form-label">Confirmar Senha</label>
+              <input 
+                type="password" 
+                class="form-control" 
+                id="password_confirmation" 
+                formControlName="password_confirmation"
+                [ngClass]="{'is-invalid': (registerForm.get('password_confirmation')?.invalid && registerForm.get('password_confirmation')?.touched) || registerForm.errors?.['passwordMismatch']}"
+              >
+              <div *ngIf="registerForm.get('password_confirmation')?.errors?.['required'] && registerForm.get('password_confirmation')?.touched" class="invalid-feedback">
+                Confirmação de senha é obrigatória
+              </div>
+              <div *ngIf="registerForm.errors?.['passwordMismatch'] && registerForm.get('password_confirmation')?.touched" class="invalid-feedback">
+                As senhas não coincidem
+              </div>
+            </div>
+            
+            <button 
+              type="submit" 
+              class="btn btn-primary w-100" 
+              [disabled]="registerForm.invalid || isSubmitting"
+            >
+              <span *ngIf="isSubmitting" class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+              Registrar
+            </button>
+            
+            <div class="text-center mt-4">
+              <p>Já tem uma conta? <a routerLink="/auth/login" class="text-primary-custom">Faça login</a></p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 

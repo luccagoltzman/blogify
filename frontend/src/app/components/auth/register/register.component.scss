@@ -1,0 +1,80 @@
+// Variáveis com cores da imagem
+$yellow: #f9e100;
+$blue: #0048ff;
+$black: #000000;
+$white: #ffffff;
+
+.register-page {
+  padding: 4rem 0;
+  background-color: #f5f5f5;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+}
+
+.auth-card {
+  background-color: $white;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 2.5rem;
+  
+  h1 {
+    color: $black;
+    font-weight: 700;
+  }
+  
+  .form-control {
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    
+    &:focus {
+      border-color: $yellow;
+      box-shadow: 0 0 0 0.25rem rgba($yellow, 0.25);
+    }
+  }
+  
+  .btn-primary {
+    padding: 0.75rem 1rem;
+    background-color: $yellow;
+    border-color: $yellow;
+    color: $black;
+    font-weight: 600;
+    
+    &:hover, &:focus {
+      background-color: darken($yellow, 10%);
+      border-color: darken($yellow, 10%);
+      color: $black;
+    }
+    
+    &:disabled {
+      background-color: #ccc;
+      border-color: #ccc;
+      color: #666;
+    }
+  }
+  
+  a {
+    color: $blue;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    
+    &:hover {
+      color: darken($blue, 15%);
+    }
+    
+    &.text-primary-custom {
+      color: $yellow !important;
+      font-weight: 600;
+      
+      &:hover {
+        color: darken($yellow, 15%) !important;
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .auth-card {
+    padding: 2rem 1.5rem;
+  }
+} 

@@ -1,0 +1,104 @@
+// Variáveis com cores da imagem
+$yellow: #f9e100;
+$blue: #0048ff;
+$black: #000000;
+$white: #ffffff;
+
+.contact-page {
+  padding: 2rem 0 4rem;
+}
+
+.contact-content {
+  margin-top: 2rem;
+  
+  .lead {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+}
+
+.contact-form {
+  background-color: $white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  
+  .form-control {
+    &:focus {
+      border-color: $yellow;
+      box-shadow: 0 0 0 0.25rem rgba($yellow, 0.25);
+    }
+  }
+  
+  .btn-primary {
+    background-color: $yellow;
+    border-color: $yellow;
+    color: $black;
+    padding: 0.5rem 2rem;
+    font-weight: 600;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      background-color: darken($yellow, 10%);
+      border-color: darken($yellow, 10%);
+    }
+  }
+}
+
+.contact-info {
+  h2 {
+    position: relative;
+    padding-bottom: 0.5rem;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background-color: $yellow;
+    }
+  }
+}
+
+.contact-method {
+  background-color: $white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  height: 100%;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+  }
+  
+  .icon-container {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    
+    i {
+      font-size: 1.5rem;
+      color: $white;
+    }
+  }
+  
+  h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+    color: $black;
+  }
+  
+  p {
+    color: #666;
+    margin-bottom: 0;
+  }
+} 

@@ -1,0 +1,68 @@
+<div class="login-page">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-lg-5 mx-auto">
+        <div class="auth-card">
+          <h1 class="text-center mb-4">Login</h1>
+          
+          <div *ngIf="error" class="alert alert-danger">
+            {{ error }}
+          </div>
+          
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input 
+                type="email" 
+                class="form-control" 
+                id="email" 
+                formControlName="email"
+                [ngClass]="{'is-invalid': loginForm.get('email')?.invalid && loginForm.get('email')?.touched}"
+              >
+              <div *ngIf="loginForm.get('email')?.errors?.['required'] && loginForm.get('email')?.touched" class="invalid-feedback">
+                Email é obrigatório
+              </div>
+              <div *ngIf="loginForm.get('email')?.errors?.['email'] && loginForm.get('email')?.touched" class="invalid-feedback">
+                Por favor, insira um email válido
+              </div>
+            </div>
+            
+            <div class="mb-3">
+              <label for="password" class="form-label">Senha</label>
+              <input 
+                type="password" 
+                class="form-control" 
+                id="password" 
+                formControlName="password"
+                [ngClass]="{'is-invalid': loginForm.get('password')?.invalid && loginForm.get('password')?.touched}"
+              >
+              <div *ngIf="loginForm.get('password')?.errors?.['required'] && loginForm.get('password')?.touched" class="invalid-feedback">
+                Senha é obrigatória
+              </div>
+              <div *ngIf="loginForm.get('password')?.errors?.['minlength'] && loginForm.get('password')?.touched" class="invalid-feedback">
+                A senha deve ter pelo menos 6 caracteres
+              </div>
+            </div>
+            
+            <div class="mb-3 text-end">
+              <a routerLink="/auth/recuperar-senha" class="text-secondary">Esqueceu sua senha?</a>
+            </div>
+            
+            <button 
+              type="submit" 
+              class="btn btn-primary w-100" 
+              [disabled]="loginForm.invalid || isSubmitting"
+            >
+              <span *ngIf="isSubmitting" class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+              Entrar
+            </button>
+            
+            <div class="text-center mt-4">
+              <p>Ainda não tem uma conta? <a routerLink="/auth/registro" class="text-primary-custom">Registre-se</a></p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 
