@@ -1,1 +1,48 @@
-<p>header works!</p>
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/">
+      <span class="brand-info">INFORMAÇÃO</span>
+      <span class="brand-truth">VERDADE</span>
+      <span class="brand-de">DE</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Início</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/categorias" routerLinkActive="active">Categorias</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/sobre" routerLinkActive="active">Sobre</a>
+        </li>
+        <ng-container *ngIf="!(authService.currentUser$ | async)">
+          <li class="nav-item">
+            <a class="nav-link btn-auth login" routerLink="/login" routerLinkActive="active">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link btn-auth register" routerLink="/registro" routerLinkActive="active">Registrar</a>
+          </li>
+        </ng-container>
+        <ng-container *ngIf="authService.currentUser$ | async as user">
+          <li class="nav-item" *ngIf="user.is_admin">
+            <a class="nav-link" routerLink="/admin/dashboard" routerLinkActive="active">Painel Admin</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              {{ user.name }}
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="userDropdown">
+              <li><a class="dropdown-item" routerLink="/perfil">Meu Perfil</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" (click)="logout()">Sair</a></li>
+            </ul>
+          </li>
+        </ng-container>
+      </ul>
+    </div>
+  </div>
+</nav>

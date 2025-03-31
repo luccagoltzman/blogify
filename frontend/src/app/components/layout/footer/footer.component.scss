@@ -1,0 +1,139 @@
+// Variáveis com cores da imagem
+$yellow: #f9e100;
+$blue: #0048ff;
+$black: #000000;
+$white: #ffffff;
+
+.footer {
+  background-color: $black;
+  color: $white;
+  padding: 3rem 0 1rem;
+}
+
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  position: relative;
+  text-align: left;
+  margin-bottom: 1.5rem;
+  
+  span {
+    display: block;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+  }
+  
+  .brand-info {
+    color: $yellow;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+  }
+  
+  .brand-truth {
+    color: $blue;
+    font-size: 1.8rem;
+    margin-top: -8px;
+    text-transform: uppercase;
+  }
+  
+  .brand-de {
+    color: $yellow;
+    font-size: 1rem;
+    position: absolute;
+    right: 30px;
+    bottom: 5px;
+  }
+}
+
+.footer-description {
+  color: #aaa;
+  margin-bottom: 2rem;
+}
+
+.footer-heading {
+  color: $yellow;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  position: relative;
+  
+  &::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 2px;
+    background-color: $blue;
+    margin-top: 0.5rem;
+  }
+}
+
+.footer-links {
+  list-style: none;
+  padding-left: 0;
+  
+  li {
+    margin-bottom: 0.8rem;
+  }
+  
+  a {
+    color: $white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    
+    &:hover {
+      color: $yellow;
+    }
+  }
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba($yellow, 0.3);
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+}
+
+.copyright {
+  color: #aaa;
+  font-size: 0.9rem;
+}
+
+.social-links {
+  display: flex;
+  justify-content: flex-end;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  
+  li {
+    margin-left: 1rem;
+    
+    a {
+      background-color: rgba($blue, 0.1);
+      border-radius: 50%;
+      color: $white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 36px;
+      width: 36px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      
+      &:hover {
+        background-color: $blue;
+        color: $white;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .social-links {
+    justify-content: flex-start;
+    margin-top: 1rem;
+    
+    li:first-child {
+      margin-left: 0;
+    }
+  }
+} 
