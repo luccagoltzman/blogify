@@ -1,0 +1,271 @@
+// Variáveis com cores da imagem
+$yellow: #f9e100;
+$blue: #0048ff;
+$black: #000000;
+$white: #ffffff;
+
+.post-detail-page {
+  padding: 2rem 0 4rem;
+}
+
+.post-content {
+  background-color: $white;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin-bottom: 3rem;
+}
+
+.post-header {
+  padding: 2rem;
+  
+  .post-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    
+    .publish-date {
+      color: #777;
+      font-size: 0.9rem;
+    }
+  }
+  
+  .post-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    color: $black;
+  }
+  
+  .post-subtitle {
+    font-size: 1.25rem;
+    color: #555;
+    margin-bottom: 1.5rem;
+  }
+  
+  .author-info {
+    display: flex;
+    align-items: center;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #eee;
+    
+    .author-avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 1rem;
+    }
+    
+    .author-details {
+      .author-name {
+        font-weight: 600;
+        color: $black;
+        margin-bottom: 0.25rem;
+      }
+      
+      .author-bio {
+        font-size: 0.9rem;
+        color: #777;
+        margin: 0;
+      }
+    }
+  }
+}
+
+.post-featured-image {
+  width: 100%;
+  
+  img {
+    width: 100%;
+    max-height: 500px;
+    object-fit: cover;
+  }
+}
+
+.post-body {
+  padding: 2rem;
+  line-height: 1.8;
+  color: #333;
+  
+  p {
+    margin-bottom: 1.5rem;
+  }
+  
+  h2, h3, h4 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: $black;
+  }
+  
+  img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+  }
+  
+  blockquote {
+    padding: 1rem 1.5rem;
+    border-left: 4px solid $yellow;
+    background-color: #f9f9f9;
+    font-style: italic;
+    color: #555;
+    margin: 1.5rem 0;
+  }
+}
+
+.post-footer {
+  background-color: #f9f9f9;
+  padding: 1.5rem 2rem;
+  
+  .post-actions {
+    display: flex;
+    margin-bottom: 1rem;
+    
+    button {
+      background: none;
+      border: none;
+      padding: 0.5rem 1rem;
+      margin-right: 1.5rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      color: #555;
+      transition: color 0.3s ease;
+      
+      i {
+        margin-right: 0.5rem;
+        font-size: 1.1rem;
+      }
+      
+      &.btn-like:hover {
+        color: #e74c3c;
+      }
+      
+      &.btn-share:hover {
+        color: $blue;
+      }
+    }
+  }
+  
+  .post-tags {
+    .tag-label {
+      font-weight: 600;
+      color: #555;
+      margin-right: 0.5rem;
+    }
+    
+    .tag-item {
+      display: inline-block;
+      margin-right: 0.75rem;
+      
+      a {
+        color: $blue;
+        text-decoration: none;
+        transition: color 0.3s ease;
+        
+        &:hover {
+          color: darken($blue, 15%);
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+.category-badge {
+  display: inline-block;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  
+  a {
+    background-color: $blue;
+    color: $white;
+    font-size: 0.75rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 3px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      background-color: $yellow;
+      color: $black;
+    }
+  }
+}
+
+.related-posts {
+  margin-top: 3rem;
+  
+  .post-card {
+    background-color: $white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    transition: transform 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-5px);
+    }
+    
+    .card-img-top {
+      height: 200px;
+      object-fit: cover;
+    }
+    
+    .post-card-body {
+      padding: 1.25rem;
+    }
+    
+    .post-title {
+      margin-bottom: 0.5rem;
+      
+      a {
+        color: $black;
+        text-decoration: none;
+        
+        &:hover {
+          color: $blue;
+        }
+      }
+    }
+    
+    .post-meta {
+      color: #999;
+      font-size: 0.8rem;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .post-header {
+    padding: 1.5rem;
+    
+    .post-title {
+      font-size: 2rem;
+    }
+    
+    .post-meta {
+      flex-direction: column;
+      align-items: flex-start;
+      
+      .publish-date {
+        margin-top: 0.5rem;
+      }
+    }
+  }
+  
+  .post-body, .post-footer {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .post-header .post-title {
+    font-size: 1.75rem;
+  }
+} 

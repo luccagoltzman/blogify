@@ -1,0 +1,92 @@
+<div class="post-detail-page">
+  <div class="container">
+    <!-- Loading spinner -->
+    <div *ngIf="isLoading" class="text-center my-5">
+      <div class="spinner-border text-primary-custom" role="status">
+        <span class="visually-hidden">Carregando...</span>
+      </div>
+    </div>
+    
+    <!-- Error message -->
+    <div *ngIf="error" class="alert alert-danger">
+      {{ error }}
+    </div>
+    
+    <!-- Post content -->
+    <div *ngIf="!isLoading && !error && post" class="post-content">
+      <div class="post-header">
+        <div class="post-meta">
+          <div class="categories">
+            <span class="category-badge" *ngFor="let category of post.categories">
+              <a [routerLink]="['/categorias', category.slug]">{{ category.name }}</a>
+            </span>
+          </div>
+          <div class="publish-date">
+            <i class="far fa-calendar-alt me-1"></i> {{ post.created_at | date:'dd/MM/yyyy' }}
+          </div>
+        </div>
+        
+        <h1 class="post-title">{{ post.title }}</h1>
+        <p class="post-subtitle" *ngIf="post.subtitle">{{ post.subtitle }}</p>
+        
+        <div class="author-info">
+          <img [src]="post.user.avatar || 'assets/images/user-placeholder.jpg'" alt="{{ post.user.name }}" class="author-avatar">
+          <div class="author-details">
+            <p class="author-name">{{ post.user.name }}</p>
+            <p class="author-bio" *ngIf="post.user.bio">{{ post.user.bio }}</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="post-featured-image">
+        <img [src]="post.image || 'assets/images/post-placeholder.jpg'" [alt]="post.title" class="img-fluid">
+      </div>
+      
+      <div class="post-body" [innerHTML]="post.content"></div>
+      
+      <div class="post-footer">
+        <div class="post-actions">
+          <button class="btn-like" (click)="likePost()">
+            <i class="far fa-heart"></i> {{ post.likes_count || 0 }}
+          </button>
+          <button class="btn-share">
+            <i class="fas fa-share-alt"></i> Compartilhar
+          </button>
+        </div>
+        
+        <div class="post-tags" *ngIf="post.tags && post.tags.length > 0">
+          <span class="tag-label">Tags:</span>
+          <span class="tag-item" *ngFor="let tag of post.tags">
+            <a [routerLink]="['/tags', tag.slug]">#{{ tag.name }}</a>
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Related posts -->
+    <div *ngIf="!isLoading && relatedPosts.length > 0" class="related-posts">
+      <h3 class="section-title">Posts Relacionados</h3>
+      
+      <div class="row">
+        <div class="col-md-4 mb-4" *ngFor="let relatedPost of relatedPosts">
+          <div class="post-card">
+            <img [src]="relatedPost.image || 'assets/images/post-placeholder.jpg'" [alt]="relatedPost.title" class="card-img-top">
+            <div class="post-card-body">
+              <div class="categories mb-2">
+                <span class="category-badge" *ngFor="let category of relatedPost.categories">
+                  <a [routerLink]="['/categorias', category.slug]">{{ category.name }}</a>
+                </span>
+              </div>
+              <h4 class="post-title">
+                <a [routerLink]="['/post', relatedPost.slug]">{{ relatedPost.title }}</a>
+              </h4>
+              <div class="post-meta">
+                <span>{{ relatedPost.created_at | date:'dd/MM/yyyy' }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 

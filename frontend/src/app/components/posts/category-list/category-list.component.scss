@@ -1,0 +1,92 @@
+// Variáveis com cores da imagem
+$yellow: #f9e100;
+$blue: #0048ff;
+$black: #000000;
+$white: #ffffff;
+
+.category-list-page {
+  padding: 2rem 0 4rem;
+}
+
+.category-card {
+  background-color: $white;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  height: 100%;
+  transition: transform 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+    
+    .category-overlay {
+      background-color: rgba($black, 0.3);
+    }
+  }
+}
+
+.category-image {
+  position: relative;
+  height: 200px;
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .category-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($black, 0.5);
+    transition: background-color 0.3s ease;
+  }
+}
+
+.category-content {
+  padding: 1.5rem;
+  
+  .category-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: $black;
+  }
+  
+  .category-description {
+    color: #555;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+  }
+  
+  .post-count {
+    color: #777;
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+  }
+  
+  .btn-category {
+    background-color: $yellow;
+    color: $black;
+    border: none;
+    padding: 0.5rem 1.25rem;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      background-color: darken($yellow, 10%);
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .category-card {
+    margin-bottom: 1.5rem;
+  }
+} 

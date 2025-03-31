@@ -1,0 +1,36 @@
+<div class="category-list-page">
+  <div class="container">
+    <h1 class="section-title">Categorias</h1>
+    
+    <div *ngIf="isLoading" class="text-center my-5">
+      <div class="spinner-border text-primary-custom" role="status">
+        <span class="visually-hidden">Carregando...</span>
+      </div>
+    </div>
+    
+    <div *ngIf="error" class="alert alert-danger">
+      {{ error }}
+    </div>
+    
+    <div *ngIf="!isLoading && !error && categories.length === 0" class="alert alert-info">
+      Nenhuma categoria encontrada.
+    </div>
+    
+    <div *ngIf="!isLoading && !error && categories.length > 0" class="row">
+      <div class="col-md-4 mb-4" *ngFor="let category of categories">
+        <div class="category-card">
+          <div class="category-image">
+            <img [src]="category.image || 'assets/images/category-placeholder.jpg'" [alt]="category.name" class="img-fluid">
+            <div class="category-overlay"></div>
+          </div>
+          <div class="category-content">
+            <h3 class="category-title">{{ category.name }}</h3>
+            <p class="category-description" *ngIf="category.description">{{ category.description }}</p>
+            <p class="post-count" *ngIf="category.posts_count">{{ category.posts_count }} publicações</p>
+            <a [routerLink]="['/categorias', category.slug]" class="btn btn-category">Ver publicações</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 
