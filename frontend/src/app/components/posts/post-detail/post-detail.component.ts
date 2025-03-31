@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, ActivatedRoute } from '@angular/router';
 import { PostService } from '../../../services/post.service';
 import { Post } from '../../../models/post.model';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-post-detail',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, HttpClientModule],
+  providers: [PostService],
   templateUrl: './post-detail.component.html',
   styleUrls: ['./post-detail.component.scss']
 })
