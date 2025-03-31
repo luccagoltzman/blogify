@@ -1,0 +1,154 @@
+<div class="profile-page">
+  <div class="container">
+    <h1 class="section-title">Meu Perfil</h1>
+    
+    <div *ngIf="isLoading" class="text-center my-5">
+      <div class="spinner-border text-primary-custom" role="status">
+        <span class="visually-hidden">Carregando...</span>
+      </div>
+    </div>
+    
+    <div *ngIf="!isLoading" class="row">
+      <!-- Atualizar Perfil -->
+      <div class="col-md-6 mb-4">
+        <div class="profile-card">
+          <h2 class="card-title">Informações Pessoais</h2>
+          
+          <div *ngIf="profileError" class="alert alert-danger">
+            {{ profileError }}
+          </div>
+          
+          <div *ngIf="profileSuccess" class="alert alert-success">
+            {{ profileSuccess }}
+          </div>
+          
+          <form [formGroup]="profileForm" (ngSubmit)="onProfileSubmit()">
+            <div class="mb-3">
+              <label for="name" class="form-label">Nome</label>
+              <input 
+                type="text" 
+                class="form-control" 
+                id="name" 
+                formControlName="name"
+                [ngClass]="{'is-invalid': profileForm.get('name')?.invalid && profileForm.get('name')?.touched}"
+              >
+              <div *ngIf="profileForm.get('name')?.errors?.['required'] && profileForm.get('name')?.touched" class="invalid-feedback">
+                Nome é obrigatório
+              </div>
+            </div>
+            
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input 
+                type="email" 
+                class="form-control" 
+                id="email" 
+                formControlName="email"
+                [ngClass]="{'is-invalid': profileForm.get('email')?.invalid && profileForm.get('email')?.touched}"
+              >
+              <div *ngIf="profileForm.get('email')?.errors?.['required'] && profileForm.get('email')?.touched" class="invalid-feedback">
+                Email é obrigatório
+              </div>
+              <div *ngIf="profileForm.get('email')?.errors?.['email'] && profileForm.get('email')?.touched" class="invalid-feedback">
+                Por favor, insira um email válido
+              </div>
+            </div>
+            
+            <div class="mb-3">
+              <label for="bio" class="form-label">Biografia</label>
+              <textarea 
+                class="form-control" 
+                id="bio" 
+                rows="4"
+                formControlName="bio"
+              ></textarea>
+            </div>
+            
+            <button 
+              type="submit" 
+              class="btn btn-primary" 
+              [disabled]="profileForm.invalid || isSavingProfile"
+            >
+              <span *ngIf="isSavingProfile" class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+              Salvar Alterações
+            </button>
+          </form>
+        </div>
+      </div>
+      
+      <!-- Atualizar Senha -->
+      <div class="col-md-6 mb-4">
+        <div class="profile-card">
+          <h2 class="card-title">Alterar Senha</h2>
+          
+          <div *ngIf="passwordError" class="alert alert-danger">
+            {{ passwordError }}
+          </div>
+          
+          <div *ngIf="passwordSuccess" class="alert alert-success">
+            {{ passwordSuccess }}
+          </div>
+          
+          <form [formGroup]="passwordForm" (ngSubmit)="onPasswordSubmit()">
+            <div class="mb-3">
+              <label for="current_password" class="form-label">Senha Atual</label>
+              <input 
+                type="password" 
+                class="form-control" 
+                id="current_password" 
+                formControlName="current_password"
+                [ngClass]="{'is-invalid': passwordForm.get('current_password')?.invalid && passwordForm.get('current_password')?.touched}"
+              >
+              <div *ngIf="passwordForm.get('current_password')?.errors?.['required'] && passwordForm.get('current_password')?.touched" class="invalid-feedback">
+                Senha atual é obrigatória
+              </div>
+            </div>
+            
+            <div class="mb-3">
+              <label for="password" class="form-label">Nova Senha</label>
+              <input 
+                type="password" 
+                class="form-control" 
+                id="password" 
+                formControlName="password"
+                [ngClass]="{'is-invalid': passwordForm.get('password')?.invalid && passwordForm.get('password')?.touched}"
+              >
+              <div *ngIf="passwordForm.get('password')?.errors?.['required'] && passwordForm.get('password')?.touched" class="invalid-feedback">
+                Nova senha é obrigatória
+              </div>
+              <div *ngIf="passwordForm.get('password')?.errors?.['minlength'] && passwordForm.get('password')?.touched" class="invalid-feedback">
+                A senha deve ter pelo menos 6 caracteres
+              </div>
+            </div>
+            
+            <div class="mb-3">
+              <label for="password_confirmation" class="form-label">Confirmar Nova Senha</label>
+              <input 
+                type="password" 
+                class="form-control" 
+                id="password_confirmation" 
+                formControlName="password_confirmation"
+                [ngClass]="{'is-invalid': (passwordForm.get('password_confirmation')?.invalid && passwordForm.get('password_confirmation')?.touched) || passwordForm.errors?.['passwordMismatch']}"
+              >
+              <div *ngIf="passwordForm.get('password_confirmation')?.errors?.['required'] && passwordForm.get('password_confirmation')?.touched" class="invalid-feedback">
+                Confirmação de senha é obrigatória
+              </div>
+              <div *ngIf="passwordForm.errors?.['passwordMismatch'] && passwordForm.get('password_confirmation')?.touched" class="invalid-feedback">
+                As senhas não coincidem
+              </div>
+            </div>
+            
+            <button 
+              type="submit" 
+              class="btn btn-secondary" 
+              [disabled]="passwordForm.invalid || isSavingPassword"
+            >
+              <span *ngIf="isSavingPassword" class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+              Atualizar Senha
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 

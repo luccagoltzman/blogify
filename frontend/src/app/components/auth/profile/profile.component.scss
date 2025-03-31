@@ -1,0 +1,82 @@
+// Variáveis com cores da imagem
+$yellow: #f9e100;
+$blue: #0048ff;
+$black: #000000;
+$white: #ffffff;
+
+.profile-page {
+  padding: 2rem 0 4rem;
+}
+
+.profile-card {
+  background-color: $white;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  height: 100%;
+  
+  .card-title {
+    color: $black;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid $yellow;
+  }
+  
+  .form-control {
+    border-radius: 6px;
+    
+    &:focus {
+      border-color: $yellow;
+      box-shadow: 0 0 0 0.25rem rgba($yellow, 0.25);
+    }
+  }
+  
+  .btn-primary {
+    background-color: $yellow;
+    border-color: $yellow;
+    color: $black;
+    font-weight: 600;
+    
+    &:hover, &:focus {
+      background-color: darken($yellow, 10%);
+      border-color: darken($yellow, 10%);
+      color: $black;
+    }
+    
+    &:disabled {
+      background-color: #ccc;
+      border-color: #ccc;
+      color: #666;
+    }
+  }
+  
+  .btn-secondary {
+    background-color: $blue;
+    border-color: $blue;
+    color: $white;
+    font-weight: 600;
+    
+    &:hover, &:focus {
+      background-color: darken($blue, 10%);
+      border-color: darken($blue, 10%);
+    }
+    
+    &:disabled {
+      background-color: #ccc;
+      border-color: #ccc;
+      color: #666;
+    }
+  }
+}
+
+.alert {
+  margin-bottom: 1.5rem;
+  border-radius: 6px;
+}
+
+.alert-success {
+  background-color: rgba($yellow, 0.2);
+  border-color: rgba($yellow, 0.3);
+  color: darken($yellow, 30%);
+} 
