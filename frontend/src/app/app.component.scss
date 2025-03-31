@@ -1,0 +1,79 @@
+// Variáveis com cores da imagem
+$yellow: #f9e100;
+$blue: #0048ff;
+$black: #000000;
+$white: #ffffff;
+
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  background-color: #f5f5f5;
+}
+
+// Classes utilitárias para as cores do tema
+.bg-primary {
+  background-color: $yellow !important;
+}
+
+.bg-secondary {
+  background-color: $blue !important;
+}
+
+.bg-dark {
+  background-color: $black !important;
+}
+
+.text-primary {
+  color: $yellow !important;
+}
+
+.text-secondary {
+  color: $blue !important;
+}
+
+.btn-primary {
+  background-color: $yellow !important;
+  border-color: $yellow !important;
+  color: $black !important;
+  
+  &:hover, &:focus {
+    background-color: darken($yellow, 10%) !important;
+    border-color: darken($yellow, 10%) !important;
+  }
+}
+
+.btn-secondary {
+  background-color: $blue !important;
+  border-color: $blue !important;
+  color: $white !important;
+  
+  &:hover, &:focus {
+    background-color: darken($blue, 10%) !important;
+    border-color: darken($blue, 10%) !important;
+  }
+}
+
+.btn-outline-primary {
+  border-color: $yellow !important;
+  color: $yellow !important;
+  
+  &:hover, &:focus {
+    background-color: $yellow !important;
+    color: $black !important;
+  }
+}
+
+.btn-outline-secondary {
+  border-color: $blue !important;
+  color: $blue !important;
+  
+  &:hover, &:focus {
+    background-color: $blue !important;
+    color: $white !important;
+  }
+}
