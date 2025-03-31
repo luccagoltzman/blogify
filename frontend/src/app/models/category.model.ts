@@ -3,6 +3,8 @@ export interface Category {
   name: string;
   slug: string;
   description?: string;
-  created_at: string;
-  updated_at: string;
+  image?: string;
+  posts_count?: number;
+  created_at?: string;
+  updated_at?: string;
 } 
