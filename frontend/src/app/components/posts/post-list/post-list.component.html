@@ -1,0 +1,105 @@
+<section class="featured-posts">
+  <div class="container">
+    <h2 class="section-title">Destaques</h2>
+    
+    <div *ngIf="isLoading" class="text-center my-5">
+      <div class="spinner-border text-primary-custom" role="status">
+        <span class="visually-hidden">Carregando...</span>
+      </div>
+    </div>
+    
+    <div *ngIf="error" class="alert alert-danger">
+      {{ error }}
+    </div>
+    
+    <div *ngIf="!isLoading && !error" class="row">
+      <div class="col-md-6 mb-4" *ngIf="featuredPosts.length > 0">
+        <div class="featured-post-main">
+          <img [src]="featuredPosts[0].image || 'assets/images/post-placeholder.jpg'" [alt]="featuredPosts[0].title" class="featured-img">
+          <div class="featured-content">
+            <div class="categories">
+              <span class="category-badge" *ngFor="let category of featuredPosts[0].categories">
+                <a [routerLink]="['/categorias', category.slug]">{{ category.name }}</a>
+              </span>
+            </div>
+            <h3 class="post-title">
+              <a [routerLink]="['/post', featuredPosts[0].slug]">{{ featuredPosts[0].title }}</a>
+            </h3>
+            <p class="post-subtitle">{{ featuredPosts[0].subtitle }}</p>
+            <div class="post-meta">
+              <span>Por {{ featuredPosts[0].user.name }}</span>
+              <span>&bull;</span>
+              <span>{{ featuredPosts[0].created_at | date:'dd/MM/yyyy' }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-md-6 mb-4" *ngFor="let post of featuredPosts.slice(1, 4)">
+            <div class="featured-post-secondary">
+              <img [src]="post.image || 'assets/images/post-placeholder.jpg'" [alt]="post.title" class="featured-img">
+              <div class="featured-content">
+                <div class="categories">
+                  <span class="category-badge" *ngFor="let category of post.categories">
+                    <a [routerLink]="['/categorias', category.slug]">{{ category.name }}</a>
+                  </span>
+                </div>
+                <h4 class="post-title">
+                  <a [routerLink]="['/post', post.slug]">{{ post.title }}</a>
+                </h4>
+                <div class="post-meta">
+                  <span>{{ post.created_at | date:'dd/MM/yyyy' }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="latest-posts">
+  <div class="container">
+    <h2 class="section-title">Últimas Publicações</h2>
+    
+    <div *ngIf="isLoading" class="text-center my-5">
+      <div class="spinner-border text-primary-custom" role="status">
+        <span class="visually-hidden">Carregando...</span>
+      </div>
+    </div>
+    
+    <div *ngIf="!isLoading && !error && posts.length === 0" class="alert alert-info">
+      Nenhum post encontrado.
+    </div>
+    
+    <div *ngIf="!isLoading && !error" class="row">
+      <div class="col-md-4 mb-4" *ngFor="let post of posts">
+        <div class="post-card">
+          <img [src]="post.image || 'assets/images/post-placeholder.jpg'" [alt]="post.title" class="card-img-top">
+          <div class="post-card-body">
+            <div class="categories mb-2">
+              <span class="category-badge" *ngFor="let category of post.categories">
+                <a [routerLink]="['/categorias', category.slug]">{{ category.name }}</a>
+              </span>
+            </div>
+            <h4 class="post-title">
+              <a [routerLink]="['/post', post.slug]">{{ post.title }}</a>
+            </h4>
+            <p class="post-excerpt">{{ post.subtitle || (post.content | slice:0:100) + '...' }}</p>
+            <div class="post-meta">
+              <span>Por {{ post.user.name }}</span>
+              <span>&bull;</span>
+              <span>{{ post.created_at | date:'dd/MM/yyyy' }}</span>
+              <span>&bull;</span>
+              <span><i class="fa fa-heart"></i> {{ post.likes_count || 0 }}</span>
+            </div>
+            <a [routerLink]="['/post', post.slug]" class="btn btn-outline-primary mt-2">Ler mais</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> 
