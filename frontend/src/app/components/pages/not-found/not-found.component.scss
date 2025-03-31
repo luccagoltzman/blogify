@@ -1,0 +1,88 @@
+// Variáveis com cores da imagem
+$yellow: #f9e100;
+$blue: #0048ff;
+$black: #000000;
+$white: #ffffff;
+
+.not-found-page {
+  display: flex;
+  align-items: center;
+  min-height: 80vh;
+  background: linear-gradient(135deg, rgba($white, 0.95) 0%, rgba($white, 0.9) 100%);
+}
+
+.error-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+  background-color: $white;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.error-code {
+  font-size: 8rem;
+  font-weight: 900;
+  line-height: 1;
+  margin: 0;
+  background: linear-gradient(45deg, $yellow, $blue);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+
+.error-divider {
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(45deg, $yellow, $blue);
+  margin: 1.5rem auto;
+  border-radius: 2px;
+}
+
+.error-title {
+  color: $black;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.error-description {
+  color: #666;
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+}
+
+.error-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  
+  .btn {
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    
+    i {
+      margin-right: 0.5rem;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .error-code {
+    font-size: 6rem;
+  }
+  
+  .error-title {
+    font-size: 1.5rem;
+  }
+  
+  .error-actions {
+    flex-direction: column;
+    
+    .btn {
+      width: 100%;
+    }
+  }
+} 
